@@ -20,23 +20,22 @@ queue<order> ord;		// 모든 주문정보를 저장해둘 queue형 자료구조
 
 string drinkName;	// 메뉴 이름
 
-// main 안에 깔끔하게 해서 구분하기 편하게 하기 위해 테스트 함수 따로 뺀거
-void test();
-
-int main() {
-
+// main 안에 깔끔하게 해서 구분하기 편하게 하기 위해 따로 뺀거
+void load() {
 	loadMenuFile("menu.txt");
 	loadBaristaFile("barista.txt");
 	loadOrderFile("order.txt");
 	cout << endl;
+}
+void test();
+
+int main() {
 
 	// loadBalancing
 	//start();
-	LoadBalancing loadbalncing; // virtual class 로 짜려햇는데 잘안됨
-	cout << endl;
-	LoadBalancing loadbalncing2(new ReaderSample);
-	//LoadBalancing loadbalncing3(new WriterSample); // 이런식으로 해도 되는 포인트 처리해줘야하지만
-
+	// 원하는 입력, 출력, 로드밸런싱을 상속을 통해서 확장성있게 로드밸런싱알고리즘을 구현
+	//ExtendedLoadBalancing(new ReaderSample, new WriterSample, new Computer);
+	ExtendedLoadBalancing(new BasicReader, new BasicWriter, new BasicComputer);
 	// test
 	//test();
 	
