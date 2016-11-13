@@ -26,9 +26,7 @@ int main() {
 
 	// loadBalancing
 	//start();
-	// 원하는 입력, 출력, 로드밸런싱을 상속을 통해서 확장성있게 로드밸런싱알고리즘을 구현
-	//ExtendedLoadBalancing(new ReaderSample, new WriterSample, new Computer);
-	ExtendedLoadBalancing(new BasicReader, new BasicWriter, new BasicComputer);
+
 	// test
 	//test();
 	
