@@ -14,13 +14,13 @@ void loadMenuFile(string fileName);
 void loadBaristaFile(string fileName);
 void loadOrderFile(string fileName);
 
-vector<menu> men;		// ¸ğµç ¸Ş´º Á¤º¸¸¦ ÀúÀåÇØµÑ vectorÇü ÀÚ·á±¸Á¶
-vector<barista> bari;	// ¸ğµç ¹Ù¸®½ºÅ¸ Á¤º¸ ÀúÀåÇØµÑ vectorÇü ÀÚ·á±¸Á¶
-queue<order> ord;		// ¸ğµç ÁÖ¹®Á¤º¸¸¦ ÀúÀåÇØµÑ queueÇü ÀÚ·á±¸Á¶
+vector<menu> men;		// ëª¨ë“  ë©”ë‰´ ì •ë³´ë¥¼ ì €ì¥í•´ë‘˜ vectorí˜• ìë£Œêµ¬ì¡°
+vector<barista> bari;	// ëª¨ë“  ë°”ë¦¬ìŠ¤íƒ€ ì •ë³´ ì €ì¥í•´ë‘˜ vectorí˜• ìë£Œêµ¬ì¡°
+queue<order> ord;		// ëª¨ë“  ì£¼ë¬¸ì •ë³´ë¥¼ ì €ì¥í•´ë‘˜ queueí˜• ìë£Œêµ¬ì¡°
 
-string drinkName;	// ¸Ş´º ÀÌ¸§
+string drinkName;	// ë©”ë‰´ ì´ë¦„
 
-// main ¾È¿¡ ±ò²ûÇÏ°Ô ÇØ¼­ ±¸ºĞÇÏ±â ÆíÇÏ°Ô ÇÏ±â À§ÇØ µû·Î »«°Å
+// main ì•ˆì— ê¹”ë”í•˜ê²Œ í•´ì„œ êµ¬ë¶„í•˜ê¸° í¸í•˜ê²Œ í•˜ê¸° ìœ„í•´ ë”°ë¡œ ëº€ê±°
 void load() {
 	loadMenuFile("menu.txt");
 	loadBaristaFile("barista.txt");
@@ -33,7 +33,7 @@ int main() {
 
 	// loadBalancing
 	//start();
-	// ¿øÇÏ´Â ÀÔ·Â, Ãâ·Â, ·Îµå¹ë·±½ÌÀ» »ó¼ÓÀ» ÅëÇØ¼­ È®Àå¼ºÀÖ°Ô ·Îµå¹ë·±½Ì¾Ë°í¸®ÁòÀ» ±¸Çö
+	// ì›í•˜ëŠ” ì…ë ¥, ì¶œë ¥, ë¡œë“œë°¸ëŸ°ì‹±ì„ ìƒì†ì„ í†µí•´ì„œ í™•ì¥ì„±ìˆê²Œ ë¡œë“œë°¸ëŸ°ì‹±ì•Œê³ ë¦¬ì¦˜ì„ êµ¬í˜„
 	//ExtendedLoadBalancing(new ReaderSample, new WriterSample, new Computer);
 	ExtendedLoadBalancing(new BasicReader, new BasicWriter, new BasicComputer);
 	// test
@@ -42,39 +42,39 @@ int main() {
 	return 0;
 }
 
-// ÀÌ°Å UI Å¬·¡½º¶óµµ ¸¸µéµçÁö ÇØ¼­ ½±°Ô º¯°æ °¡´ÉÇÏ°Ô ÇÒ ÇÊ¿ä ÀÖÀ½
-// ¹ÚÇöÁØ : ³ªÁß¿¡ Áö¿ö¾ßÇÒ ºÎºĞÀÌ¶ó ±¦Âú¾Æ¿ä
+// ì´ê±° UI í´ë˜ìŠ¤ë¼ë„ ë§Œë“¤ë“ ì§€ í•´ì„œ ì‰½ê²Œ ë³€ê²½ ê°€ëŠ¥í•˜ê²Œ í•  í•„ìš” ìˆìŒ
+// ë°•í˜„ì¤€ : ë‚˜ì¤‘ì— ì§€ì›Œì•¼í•  ë¶€ë¶„ì´ë¼ ê´œì°®ì•„ìš”
 void test() {
 	int i;
 
 	for (i = 0; i < men.size(); i++)
-		cout << i << "¹ø ¸Ş´º, ¸Ş´ºÀÌ¸§ :" << men[i].getDrinkName() << " ¸¸µå´Â ½Ã°£ :" << men[i].getMakeTime() << "ºĞ" << endl;
+		cout << i << "ë²ˆ ë©”ë‰´, ë©”ë‰´ì´ë¦„ :" << men[i].getDrinkName() << " ë§Œë“œëŠ” ì‹œê°„ :" << men[i].getMakeTime() << "ë¶„" << endl;
 	cout << endl;
 
 	for (i = 0; i < bari.size(); i++)
-		cout << i << "¹ø ¹Ù¸®½ºÅ¸, ¼÷·Ãµµ :" << bari[i].getRank() << endl;
+		cout << i << "ë²ˆ ë°”ë¦¬ìŠ¤íƒ€, ìˆ™ë ¨ë„ :" << bari[i].getRank() << endl;
 	cout << endl;
 
 	for (i = 0; i < bari.size(); i++) {
-		cout << i << "¹ø ¹Ù¸®½ºÅ¸, ÁÖ¹®·® : " << bari[i].getNumOfCofMade() << endl;
+		cout << i << "ë²ˆ ë°”ë¦¬ìŠ¤íƒ€, ì£¼ë¬¸ëŸ‰ : " << bari[i].getNumOfCofMade() << endl;
 	}
 
 	while (!ord.empty()) {
-		cout << "ÁÖ¹®¹øÈ£ : " << ord.front().getOrderNum() << " ÁÖ¹®½Ã°¢ : " << ord.front().getOrderTime()
-			<< " ÁÖ¹®¸Ş´º :" << ord.front().getDrinkName() << " ÁÖ¹®¼ö·® :" << ord.front().getNumOfDrink() << endl;
+		cout << "ì£¼ë¬¸ë²ˆí˜¸ : " << ord.front().getOrderNum() << " ì£¼ë¬¸ì‹œê° : " << ord.front().getOrderTime()
+			<< " ì£¼ë¬¸ë©”ë‰´ :" << ord.front().getDrinkName() << " ì£¼ë¬¸ìˆ˜ëŸ‰ :" << ord.front().getNumOfDrink() << endl;
 		ord.pop();
 	}
 	cout << endl;
 
-	// myTime.h °ü·Ã Å×½ºÆ® and »ç¿ë¹ı
+	// myTime.h ê´€ë ¨ í…ŒìŠ¤íŠ¸ and ì‚¬ìš©ë²•
 	/*myTime t1 = "08:30:00";
-	myTime t2 = "25:62:80"; // Àß¸øµÈ µ¥ÀÌÅÍ°¡ µé¾î¿ÔÀ»°æ¿ì getSec()À» È£ÃâÇØÁÖ¸é ¹Ù¸¥ µ¥ÀÌÅÍ·Î ¹Ù²ï´Ù(±Ùµ¥ ±×·²ÀÏÀº ¾øÀ»µí..)
+	myTime t2 = "25:62:80"; // ì˜ëª»ëœ ë°ì´í„°ê°€ ë“¤ì–´ì™”ì„ê²½ìš° getSec()ì„ í˜¸ì¶œí•´ì£¼ë©´ ë°”ë¥¸ ë°ì´í„°ë¡œ ë°”ë€ë‹¤(ê·¼ë° ê·¸ëŸ´ì¼ì€ ì—†ì„ë“¯..)
 	cout << t1 << " " << t2 << endl;
 	cout << t2.getHour() << ":" << t2.getMin() << ":" << t2.getSec() << endl;
 	cout << t1 << " " << t2 << endl;
 	myTime t3 = "08:30:00";
-	if (t1 == t3) // ½±°Ô ½Ã°£ÀÌ °°ÀºÁö(ÁÖ¹®½Ã°£°ú ÁøÇà½Ã°£) ºñ±³ °¡´É
-		cout << "°°½À´Ï´Ù" << endl;
+	if (t1 == t3) // ì‰½ê²Œ ì‹œê°„ì´ ê°™ì€ì§€(ì£¼ë¬¸ì‹œê°„ê³¼ ì§„í–‰ì‹œê°„) ë¹„êµ ê°€ëŠ¥
+		cout << "ê°™ìŠµë‹ˆë‹¤" << endl;
 	
 	for (int i = 0; i < 30; i++) {
 		++t3;
@@ -89,14 +89,14 @@ void test() {
 }
 
 /****************************
-¸Ş´º¿¡ ´ëÇÑ µ¥ÀÌÅÍ¸¦ ÀĞ¾î¿Â´Ù
+ë©”ë‰´ì— ëŒ€í•œ ë°ì´í„°ë¥¼ ì½ì–´ì˜¨ë‹¤
 ****************************/
 void loadMenuFile(string fileName) {
 
 	int i;
-	int numOfMenu;	// ÃÑ ¸Ş´ºÀÇ ¼ıÀÚ
-	int makeTime, drinkPrice;	// ¸Ş´º¸¦ ¸¸µå´Âµ¥ °É¸®´Â ½Ã°£, ¸Ş´ºÀÇ °¡°İ
-	int makableRank;	// ÀÌ ¸Ş´º¸¦ ¸¸µå´Âµ¥ ÇÊ¿äÇÑ ¹Ù¸®½ºÅ¸ ·©Å©
+	int numOfMenu;	// ì´ ë©”ë‰´ì˜ ìˆ«ì
+	int makeTime, drinkPrice;	// ë©”ë‰´ë¥¼ ë§Œë“œëŠ”ë° ê±¸ë¦¬ëŠ” ì‹œê°„, ë©”ë‰´ì˜ ê°€ê²©
+	int makableRank;	// ì´ ë©”ë‰´ë¥¼ ë§Œë“œëŠ”ë° í•„ìš”í•œ ë°”ë¦¬ìŠ¤íƒ€ ë­í¬
 
 	cout << fileName << " loading" << endl;
 	ifstream in(fileName);
@@ -116,13 +116,13 @@ void loadMenuFile(string fileName) {
 }
 
 /********************************
-¹Ù¸®½ºÅ¸¿¡ ´ëÇÑ µ¥ÀÌÅÍ¸¦ ÀĞ¾î¿Â´Ù
+ë°”ë¦¬ìŠ¤íƒ€ì— ëŒ€í•œ ë°ì´í„°ë¥¼ ì½ì–´ì˜¨ë‹¤
 ********************************/
 void loadBaristaFile(string fileName) {
 
 	int i, j;
-	int numOfBarista;	// ÃÑ ¹Ù¸®½ºÅ¸ÀÇ ¼ıÀÚ
-	int rank;	// ¹Ù¸®½ºÅ¸ÀÇ ·©Å© (0 ~ 5)
+	int numOfBarista;	// ì´ ë°”ë¦¬ìŠ¤íƒ€ì˜ ìˆ«ì
+	int rank;	// ë°”ë¦¬ìŠ¤íƒ€ì˜ ë­í¬ (0 ~ 5)
 		
 	cout << fileName << " loading" << endl;
 	ifstream in(fileName);
@@ -142,14 +142,14 @@ void loadBaristaFile(string fileName) {
 }
 
 /*********************************
-ÁÖ¹®¿¡ ´ëÇÑ µ¥ÀÌÅÍ¸¦ Å¥¿¡ ÀúÀåÇÑ´Ù
+ì£¼ë¬¸ì— ëŒ€í•œ ë°ì´í„°ë¥¼ íì— ì €ì¥í•œë‹¤
 **********************************/
 void loadOrderFile(string fileName) {
 
-	int orderNum;		// ÁÖ¹®¹øÈ£
-	int customerNum;	// °í°´¹øÈ£
-	string orderTime;	// ÁÖ¹®½Ã°£
-	int numOfDrink;		// ÁÖ¹®¼ö·®
+	int orderNum;		// ì£¼ë¬¸ë²ˆí˜¸
+	int customerNum;	// ê³ ê°ë²ˆí˜¸
+	string orderTime;	// ì£¼ë¬¸ì‹œê°„
+	int numOfDrink;		// ì£¼ë¬¸ìˆ˜ëŸ‰
 
 	cout << fileName << " loading" << endl;
 	ifstream in(fileName);
