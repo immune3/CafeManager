@@ -31,7 +31,7 @@ private:
 
 };
 
-// Reader Á¾¼ÓÇØ¼­ ¿øÇÏ´Âµ¥·Î ±¸Çö ½ÇÁ¦ ·Îµå ¹ë·±½Ì¿¡¼± Reader ¹Ş¾Æ¼­ readÇÔ
+// Reader ì¢…ì†í•´ì„œ ì›í•˜ëŠ”ë°ë¡œ êµ¬í˜„ ì‹¤ì œ ë¡œë“œ ë°¸ëŸ°ì‹±ì—ì„  Reader ë°›ì•„ì„œ readí•¨
 class ReaderSample : virtual public Reader {
 public:
 	void read() { cout << "Reader Sample" << endl; 
@@ -46,7 +46,7 @@ class WriterSample : public Writer {
 public:
 	void write() {
 		cout << "Writer Sample" << endl;
-		this->writeData(); // È¤Àº ºÎ¸ğ²¨ ½á¹ö¸®´øÁö 
+		this->writeData(); // í˜¹ì€ ë¶€ëª¨êº¼ ì¨ë²„ë¦¬ë˜ì§€ 
 		this->writeResult();
 	}
 private:
@@ -103,9 +103,9 @@ extern queue<order> ord;
 extern void load();
 extern void test();
 
-// Basic ´Ü°è ±¸Çö ½Ã°£ Á¶°Ç ¾øÀ» ¶§ ·Îµå¹ë·±½Ì 
-// ÀÌÈÄ ½Ã°£ ¹× ´Ù¸¥ Á¶°Ç Ãß°¡¿¡ µû¸¥ ·Îµå ¹ë·±½Ìµµ »ó¼ÓÀ» ÅëÇØ ±¸Çö 
-// ¿øÇÑ´Ù¸é »ó¼ÓÀ» ÅëÇØ È®Àå½ÃÄÑ ±¸ÇöÇÒ ¼ö ÀÖ°Ô ÇÏ±â¸¦ ¸ñÇ¥·Î ÇÏ°íÀÖÀ½
+// Basic ë‹¨ê³„ êµ¬í˜„ ì‹œê°„ ì¡°ê±´ ì—†ì„ ë•Œ ë¡œë“œë°¸ëŸ°ì‹± 
+// ì´í›„ ì‹œê°„ ë° ë‹¤ë¥¸ ì¡°ê±´ ì¶”ê°€ì— ë”°ë¥¸ ë¡œë“œ ë°¸ëŸ°ì‹±ë„ ìƒì†ì„ í†µí•´ êµ¬í˜„ 
+// ì›í•œë‹¤ë©´ ìƒì†ì„ í†µí•´ í™•ì¥ì‹œì¼œ êµ¬í˜„í•  ìˆ˜ ìˆê²Œ í•˜ê¸°ë¥¼ ëª©í‘œë¡œ í•˜ê³ ìˆìŒ
 
 class BasicReader : public Reader {
 public :
