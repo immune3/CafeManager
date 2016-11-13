@@ -5,7 +5,6 @@
 #include "order.h"
 #include "myTime.h"
 #include "loadBalancing.h"
-#include "extendedLoadBalancing.h"
 
 using namespace std;
 
@@ -21,12 +20,6 @@ queue<order> ord;		// 모든 주문정보를 저장해둘 queue형 자료구조
 string drinkName;	// 메뉴 이름
 
 // main 안에 깔끔하게 해서 구분하기 편하게 하기 위해 따로 뺀거
-void load() {
-	loadMenuFile("menu.txt");
-	loadBaristaFile("barista.txt");
-	loadOrderFile("order.txt");
-	cout << endl;
-}
 void test();
 
 int main() {
